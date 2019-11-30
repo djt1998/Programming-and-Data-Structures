@@ -1,0 +1,33 @@
+/*
+CSE 17
+Jitong Ding
+jid221
+Program #3 DEADLINE: November 7, 2018
+Program Description: Conversational Arithmetic
+*/
+
+public abstract class Expression{
+  
+  protected int leftOpInt;
+  protected int rightOpInt;
+  public static NumberConvertor numConvertor = new NumberConvertor();
+  
+  public Expression(String leftOp, String rightOp) throws InvalidQuestionException{
+      if(numConvertor.toNumber(leftOp)==-1 || numConvertor.toNumber(rightOp) == -1){
+        throw new InvalidQuestionException();
+}
+      else{
+        leftOpInt = numConvertor.toNumber(leftOp);
+        rightOpInt = numConvertor.toNumber(rightOp);
+}
+  }
+  
+  public abstract int evaluate();
+  
+  public String evaluateInWords(){
+     NumberConvertor a = new NumberConvertor();
+     return a.toWords(evaluate());
+  }
+ 
+
+}

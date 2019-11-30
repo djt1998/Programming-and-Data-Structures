@@ -1,0 +1,32 @@
+/*
+CSE 17
+Jitong Ding
+jid221
+Program #3 DEADLINE: November 7, 2018
+Program Description: Conversational Arithmetic
+*/
+
+
+public class NumberWord implements Comparable<NumberWord>{
+  
+  private int value;
+  private String inWords;
+  
+  public NumberWord(int value,String inWords){
+    this.value= value;
+    this.inWords = inWords;
+  }
+  
+  public int getValue(){
+    return value;
+  }
+  
+  public String getInWords(){
+    return inWords;
+  }
+  
+  public int compareTo(NumberWord obj){
+    return inWords.compareToIgnoreCase(obj.getInWords());
+  }
+  
+}

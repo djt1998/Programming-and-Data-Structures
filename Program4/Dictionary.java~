@@ -1,0 +1,55 @@
+/*
+CSE 17
+Jitong Ding
+jid221
+Program #4 DEADLINE: November 16, 2018
+Program Description: Word Jumble Solver
+*/                  
+
+import java.util.ArrayList;
+
+public class Dictionary{
+  
+  /** Private data filed */
+  private int maxWordLength; /** An int of max word length */
+  private ArrayList<String>[] wordList;/** A generic ArrayList Array */
+ 
+  /** Construct a new Dictionary initializing the maxWordLength and wordList */
+  public Dictionary(int maxWordLength){
+    this.maxWordLength = maxWordLength;
+    wordList = (ArrayList<String>[])new ArrayList[maxWordLength];
+    for(int i = 0;i<maxWordLength;++i){
+      wordList[i] = new ArrayList<String>();
+  }
+}
+  /** Construct a new Dictionary seeting maxWordLength to 10 call the Dictionary(maxWordLength) construct*/
+  public Dictionary(){
+    this(10);
+  }
+  
+  
+  public void addEntry(String word){
+    wordList[word.length()-1].add(word); 
+}
+  
+  public boolean lookup(String s){
+    return lookup(s,0,(wordList[s.length()-1].size())-1);
+  }
+  
+  /** An recursive helper method to overload the method*/
+  public boolean lookup(String s, int low, int high){
+    if(high<low){   /** not found*/
+      return false;
+    }
+    int mid = (low+high) / 2;
+    if(s.compareToIgnoreCase(wordList[s.length()-1].get(mid))<0){ /** search in first half of array*/
+      return lookup(s,low,mid-1);
+    }
+    else if(s.equalsIgnoreCase(wordList[s.length()-1].get(mid))){ /** find it*/
+      return true;
+    }
+    else{     /** search in second half of array*/
+      return lookup(s,mid+1,high);
+  }
+  }
+}

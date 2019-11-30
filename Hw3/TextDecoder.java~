@@ -1,0 +1,67 @@
+ /*
+CSE 17
+Jitong Ding
+jid221
+Homework #3 DEADLINE: October 1, 2018
+Program: Text Messaging
+*/
+
+import java.util.Scanner;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Arrays;
+
+public class TextDecoder{
+   
+  private TextMessage[] messages;
+  private int msgCount;
+  
+  public TextDecoder(){
+    messages = new TextMessage[10];
+    msgCount = 0;
+  }
+  
+  public void readMessagesFromFile(File msgFile) throws Exception{
+    Scanner scan = new Scanner(msgFile);
+    BufferedReader message = new BufferedReader(new FileReader(msgFile));
+    String text;
+    String[] textMessage = new String[messages.length];
+    while((text = message.readLine()) != null){
+      textMessage[msgCount] = text;
+      msgCount +=1;
+      if(msgCount==9){
+        break;
+      }
+    }
+    
+    for (int i = 0; i< msgCount; ++i){
+      String[] parts  = textMessage[i].split(" ",2);
+      messages[i] = new TextMessage(parts[0],parts[1]);
+    }
+    if (msgCount<messages.length){
+      for (int m = msgCount; m<messages.length; ++m){
+        messages[m] = new TextMessage(null,null);
+      }
+    }
+    message.close();
+    
+  }
+  public void printMessages(){
+    for(int i =0; i<msgCount;++i){
+      System.out.printf("%s   %s\n",messages[i].getRecipient()+":",messages[i].getDecodedMessage());
+  }
+  }
+  public static void main(String[] args) throws Exception{
+    
+    if(args.length != 1){
+      System.out.println("Usage: java TextDecoder filename");
+      System.exit(0);
+    }
+    
+    File messageFile = new File(args[0]); 
+    TextDecoder decoder = new TextDecoder();
+    decoder.readMessagesFromFile(messageFile);
+    decoder.printMessages();
+  }
+}

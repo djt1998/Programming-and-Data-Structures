@@ -1,0 +1,48 @@
+/*
+CSE 17
+Jitong Ding
+jid221
+Program #2 DEADLINE: October 16, 2018
+Program Description: Simple Bank
+*/
+
+public class BankAccount{
+  
+  /** A protected data field */
+  protected int accountNum;
+  protected String customerName;
+  protected double balance;
+  
+  public BankAccount(int theAccountNum, String aCostomerName, double aBalance){
+    accountNum = theAccountNum;
+    customerName = aCostomerName;
+    balance = aBalance;
+  }
+  
+  public BankAccount(int anAccountNum, String theCostomerName){
+    accountNum = anAccountNum;
+    customerName = theCostomerName;
+    balance = 0;
+  }
+  
+  public int getAccountNum(){
+    return accountNum;
+  }
+  
+  public String getCustomerName(){
+    return customerName;
+  }
+  
+  public double getBalance(){
+    return balance;
+  }
+  
+  public void makeDeposit(double depositAmt){
+    balance += depositAmt;
+  }
+  
+  public void printAccountInfo(){
+    System.out.printf("%-27s%8.2f\n", accountNum+customerName, balance);
+}
+}
+    

@@ -1,0 +1,31 @@
+/**
+CSE 17
+Jitong Ding
+jid221
+Prpgram #1    Deadline: September 21, 2018 
+Program:  A class for individual and their income
+*/
+
+public class Person{
+  
+  private String name;
+  private int income;
+  
+  public Person(String aName, int aIncome){
+    name = aName;
+    income = aIncome;
+  }
+  
+  public String getName(){
+    return name;
+  }
+  
+  public int getIncome(){
+    return income;
+  }
+  
+  public void setIncome(int income){
+    this.income = income;
+  }
+  
+}

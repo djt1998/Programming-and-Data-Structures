@@ -1,0 +1,79 @@
+/*
+CSE 17
+Jitong Ding
+jid221
+Homework #3 DEADLINE: October 29, 2018
+Program: Decimal and Binary transition
+*/
+
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public class NumberConvertor{
+  
+  public static int binaryToDecimal(String binText) throws BinaryFormatException{
+    int decimal = 0;
+    int length = 0;
+    while(length<binText.length()){
+      if(binText.charAt(i)=='0'||binText.charAt(i)=='1'){
+        for(int i =0; i< binText.length(); ++i){
+        int remain = (binText.charAt(binText.length()-(i+1)))-'0';
+        decimal += (remain*Math.pow(2,i));
+    }
+      }
+      else{
+        
+  }
+    return decimal;
+  }
+  }
+  
+  public static String decimalToBinary(int decInt){
+    String binNum = "";
+    while(decInt != 0){
+      binNum = (decInt%2) + binNum;
+      decInt /= 2;
+  }
+    return binNum;
+  }
+  
+  public static void main(String[] args) throws Exception{
+    Scanner scan = new Scanner(System.in);
+    while(true){
+      System.out.print("Enter a choice (B,D, or Q):");
+      char c = scan.next().charAt(0);
+      if(c=='B'||c=='b'){
+        System.out.print("Enter a binary number:");
+        try{
+          String bin = scan.next();
+          System.out.println("The decimal equivalent is "+binaryToDecimal(bin));
+          System.out.println();
+    }
+      }
+      else if (c=='D'||c=='d'){
+        System.out.print("Enter a nonnegative decimal integer:");
+        try{
+          int num= scan.nextInt();
+          if(num <0){
+            System.out.println("That’s a negative integer!");
+          }
+          else{
+            System.out.println("The binary equivalent is "+decimalToBinary(num));
+            }
+          }
+        catch(InputMismatchException ex){
+         System.out.println("You did not enter a valid integer.");
+        }
+        System.out.println();
+    }
+      else if (c=='Q'||c=='q'){
+        System.out.println("Goodbye!");
+        break;
+    }
+      else{
+        System.out.printf("%s is not a valid option.\n",c);
+        System.out.println();
+    }
+  }
+}
+}

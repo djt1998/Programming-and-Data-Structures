@@ -1,0 +1,78 @@
+/*
+CSE 17
+Jitong Ding
+jid221
+Program #3 DEADLINE: November 7, 2018
+Program Description: Conversational Arithmetic
+*/
+
+
+public class QuestionTemplate{
+  
+  private String preText;
+  private String middleText;
+  private String endText;
+  private int operation;
+  
+  public QuestionTemplate(String preText, String middleText, String endText, int operation){
+    this.preText = preText;
+    this.middleText= middleText;
+    this.endText = endText; 
+    this.operation = operation;
+  }
+  
+  public boolean isMatch(String question){
+    String theQuestion = question.trim();
+    int pre = theQuestion.indexOf(preText);
+    int mid = theQuestion.indexOf(middleText);
+    int end = theQuestion.indexOf(endText);
+    if (pre==-1 || mid ==-1 || end==-1){
+      return false;
+    }
+    if (end>mid&&mid>pre)
+      return true;
+    return false;
+  }  
+  
+  public Expression parseQuestion(String question) throws InvalidQuestionException{
+    String theQuestion = question.trim();
+    int pre = theQuestion.indexOf(preText);
+    int mid = theQuestion.indexOf(middleText);
+    int end = theQuestion.indexOf(endText);
+    String preText1 = theQuestion.substring(0,preText.length());
+    String middleText1 = theQuestion.substring(mid,(mid+middleText.length()));;
+    String endText1 = theQuestion.substring(end,(end+endText.length()));
+    QuestionTemplate template = new QuestionTemplate(preText1,middleText1,endText1,operation);
+    if(template.isMatch(question)){
+      String Num1 = theQuestion.substring(preText.length()+1,mid-1);
+      String Num2 = theQuestion.substring(mid+middleText.length()+1,end);
+      if(operation==0){
+        Expression addition = new AdditionExpression(Num1,Num2);
+        return addition;
+      }
+      else if(operation==1){
+        Expression subtraction = new SubtractionExpression(Num1,Num2);
+        return subtraction;
+      }
+      else if(operation==2){
+        Expression multiplication = new MultiplicationExpression(Num1,Num2);
+        return multiplication;
+      }
+      else if(operation==3){
+        Expression division = new DivisionExpression(Num1,Num2);
+        return division;
+      }
+    }
+      throw new InvalidQuestionException();
+  }
+  public static void main(String[] args){
+    QuestionTemplate a = new QuestionTemplate("What is","plus","?",ADDITION);
+    try{
+      Expression a = new SubtractionExpression("One hundred","Twenty");
+      System.out.println(a.evaluateInWords());
+    }
+    catch(InvalidQuestionException ex){
+      System.out.println("Just shit");
+    }
+  
+}

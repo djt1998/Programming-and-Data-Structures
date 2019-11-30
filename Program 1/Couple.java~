@@ -1,0 +1,43 @@
+/**
+CSE 17
+Jitong Ding
+jid221
+Program #1    Deadline: September 21, 2018 
+Program:  A class for two people who are married
+*/
+public class Couple{
+  private Person firstSpouse;
+  private Person secondSpouse;
+  
+  public Couple(Person aFirstSpouse, Person aSecondSpouse){
+    firstSpouse = aFirstSpouse;
+    secondSpouse = aSecondSpouse;
+  }
+  
+  public Person getFirstSpouse(){
+    return firstSpouse;
+  }
+   
+  public Person getSecondSpouse(){
+    return secondSpouse;
+  }
+  
+  public int getTotalIncome(){
+    int sum = 0;
+    return sum = firstSpouse.getIncome() + secondSpouse.getIncome();
+  }
+  
+  public String toString(){
+    return firstSpouse.getName() + "&" + secondSpouse.getName() + ": $" + firstSpouse.getIncome() + "/ $" + secondSpouse.getIncome();
+  }
+  
+  public static double calculateSavings(TaxTable aBase, TaxTable aComparison){
+    double differ = 0;
+    double saving1 = 0;
+    double saving2 = 0;
+    saving1 = getTotalIncome()- aComparison.calculateTax(getTotalIncome());
+    saving2 = getTotalIncome()- aBase.calculateTax(getTotalIncome());
+    return differ = saving1-saving2;
+  }
+}
+  

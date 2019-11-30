@@ -1,0 +1,27 @@
+/*
+CSE 17  
+Jitong Ding
+jid221
+Homework #3 DEADLINE: October 29, 2018
+Program: Decimal and Binary transition
+*/
+
+public class BinaryFormatException extends NumberConvertor{
+  
+  private char badChar;
+  private int charPos;
+  
+  public BinaryFormatException(int charPos, char badChar){
+    this.charPos = charPos;
+    this.badChar = badChar;
+  }
+  
+  public char getBadChar(){
+    return badChar;
+  }
+  
+  public int getCharPos(){
+    return charPos;
+  }
+  
+}

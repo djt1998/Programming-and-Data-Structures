@@ -1,0 +1,16 @@
+/*
+CSE 17
+Jitong Ding
+jid221
+Program #3 DEADLINE: November 7, 2018
+Program Description: Conversational Arithmetic
+*/
+
+public class SubtractionExpression extends Expression{
+  public SubtractionExpression(String leftOp, String rightOp) throws InvalidQuestionException{
+    super(leftOp,rightOp);
+}
+  public int evaluate(){
+    return (leftOpInt - rightOpInt);
+  }
+}

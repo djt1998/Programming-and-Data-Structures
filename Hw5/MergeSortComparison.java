@@ -6,6 +6,7 @@ Homework #5 DEADLINE: November 29, 2018
 Program: Merge Sort Comparison
 */
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class MergeSortComparison{
@@ -106,7 +107,7 @@ public class MergeSortComparison{
   
    /** The main method. */
   public static void main(String[] args){
-    Random rand = new Random();
+    Random rand = new SecureRandom();
     /** A while loop for the Integer array for four different sizes. */
     int i = 0;
     System.out.println("Integers:");

@@ -111,7 +111,7 @@ public class Jumble{
       }
        /** When "Enter" comes in, end the program*/
       else{
-        if(scrWord.equals("")){
+        if("".equals(scrWord)){
           System.out.println();
           System.out.println("Goodbye!");
           break;

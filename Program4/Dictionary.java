@@ -33,7 +33,7 @@ public class Dictionary{
 }
   /** A method to return the boolean*/
   public boolean lookup(String s){
-    if(s.equals("a")){
+    if("a".equals(s)){
       return true;
   }
     return lookup(s,0,(wordList[s.length()-1].size())-1);

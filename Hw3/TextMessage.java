@@ -221,12 +221,12 @@ public class TextMessage{
         }   
       }
     /** A else if-statement to find the char'0' in keyPresses */
-      else if (keyPresses.substring(i,i+1).equals("0")){
+      else if ("0".equals(keyPresses.substring(i,i+1))){
         decodeMsg += decodeArray[0][0];
         numCount +=1;
       }
     /** A else if-statement to find the char'1' in keyPresses */
-      else if (keyPresses.substring(i,i+1).equals("1")){
+      else if ("1".equals(keyPresses.substring(i,i+1))){
         decodeMsg += decodeArray[1][0];
         numCount +=1;
       }

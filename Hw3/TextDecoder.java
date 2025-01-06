@@ -6,6 +6,7 @@ Homework #3 DEADLINE: October 1, 2018
 Program: Text Messaging
 */
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.File;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -35,7 +36,7 @@ msgFile object, updating messages and msgCount appropriately */
     String text;
     String[] textMessage = new String[messages.length];
     /** Using while loop to copy the messages from the file to the textMessage array*/
-    while((text = message.readLine()) != null){
+    while((text = BoundedLineReader.readLine(message, 5_000_000)) != null){
       textMessage[msgCount] = text;
       msgCount +=1;
       if(msgCount==9){
